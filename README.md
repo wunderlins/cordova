@@ -1,5 +1,7 @@
 # installation
-## debian - android 
+## debian - android
+
+all tools require about 12GB of disk space.
 
 	sudo dpkg --add-architecture i386
 	sudo apt-get update
@@ -22,16 +24,20 @@ install oracle java sdk
 	sudo apt-get install java-package
 	# download jdk from http://www.oracle.com/technetwork/java/javase/downloads/index.html
 	make-jpkg jdk-8u111-linux-x64.tar.gz
+	sudo dpkg -i oracle-java8-jdk_8u111_amd64.deb
 
 - Download android Studio for linux: https://developer.android.com/studio/index.html
 - run installer
-- install platfoem (lollipop in my case)
-- install nexus 5 emulator
+- install SDK
+- install platform (lollipop in my case)
+- create nexus 5 emulator
 
 Add paths in `.bashrc` or `.profile`
 	
-	export PATH=${PATH}:/opt/Android/Sdk/platform-tools:/opt/Android/Sdk/tools:
-
+	# point this folder to the location where studio has installed the sdk
+	export ANDROID_HOME=/opt/Android/Sdk 
+	export PATH=${PATH}:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools
+	
 - create a simple java app
 - build it to test the build system, some dependencies might have to be fulfilled
 - run to test emulator. it will be later needed by cordova to test your app
@@ -46,3 +52,6 @@ create app
 	cordova create hello net.wunderlin.hello HelloWorld
 	cd hello
 	cordova platform add android --save # or ios or browser
+	cordova platform ls
+	
+	
