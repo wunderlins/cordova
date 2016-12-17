@@ -17,6 +17,11 @@
  * under the License.
  */
 var app = {
+		
+		decks: [
+			"device", "battery", "camera", "motion"
+		],		
+		
     // Application Constructor
     initialize: function() {
         document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
@@ -28,9 +33,16 @@ var app = {
     // 'pause', 'resume', etc.
     onDeviceReady: function() {
 			this.receivedEvent('deviceready');
-			document.getElementById("btn-device").addEventListener("click", this.btnClick, false);
-			document.getElementById("btn-battery").addEventListener("click", this.btnClick, false);
-			document.getElementById("btn-camera").addEventListener("click", this.btnClick, false);
+			var btns = document.getElementById("buttons")
+			for (e in app.decks) {
+				var el = document.createElement("button")
+				var name = app.decks[e]
+				el.setAttribute("id", "btn-"+name)
+				el.innerHTML = name;
+				el.addEventListener("click", this.btnClick, false);
+				btns.appendChild(el);
+			}
+			
 			//console.log(r)
 			this.get_device()
 			document.getElementById("deck-device").style.display = "block";
@@ -47,6 +59,13 @@ var app = {
 			document.getElementById("camera-picture-camera").addEventListener("click", this.camera.take_picture, false);
 			document.getElementById("camera-picture-storage").addEventListener("click", this.camera.load_picture, false);
 			
+
+			// iOS will measure between 40-1000ms. only the return of the result will 
+			// be delayed above 1000ms but  not the measurement
+			var options = { frequency: 1000 };  // Update every 3 seconds
+			var watchID = navigator.accelerometer.watchAcceleration(
+				app.onMotionSuccess, app.onMotionError, options);
+
 		},
 		
     // Update DOM on a Received Event
@@ -65,9 +84,8 @@ var app = {
     	//console.log(e.srcElement.id);
     	
     	var id = e.srcElement.id.substr(4);
-    	document.getElementById("deck-device").style.display = "none";
-    	document.getElementById("deck-battery").style.display = "none";
-    	document.getElementById("deck-camera").style.display = "none";
+			for (e in app.decks)
+	    	document.getElementById("deck-"+app.decks[e]).style.display = "none";
     	
     	console.log(id)
     	document.getElementById("deck-" + id).style.display = "block";
@@ -160,6 +178,19 @@ var app = {
 		onBatteryStatusCritical: function(status) {
 			alert("Battery Critical");
 			app.battery_status(status);
+		},
+		
+		// == motion ==
+		
+		onMotionSuccess: function(acceleration) {
+			app.innerHtml("motion-x", acceleration.x);
+			app.innerHtml("motion-y", acceleration.y);
+			app.innerHtml("motion-z", acceleration.z);
+			app.innerHtml("motion-tst", acceleration.timestamp);
+		},
+
+		onMotionError: function() {
+			alert('onMotionError!');
 		},
 		
 		// == general events ==

@@ -38,10 +38,10 @@
 </head>
 <body id="body">
 	<div class="app">
-	
-	<button id="btn-device">Device</button>
+	<div id="buttons"></div>
+	<!--button id="btn-device">Device</button>
 	<button id="btn-battery">Battery</button>
-	<button id="btn-camera">Camera</button>
+	<button id="btn-camera">Camera</button-->
 	<hr />
 	
 	<!--
@@ -84,7 +84,16 @@
 		<img id="camera-img" src=""/>
 	</div>
 
-
+	<div id="deck-motion" class="deck">
+		<table>
+			<tbody>
+				<tr><td>X</td><td id="motion-x"></td></tr>
+				<tr><td>Y</td><td id="motion-y"></td></tr>
+				<tr><td>Z</td><td id="motion-z"></td></tr>
+				<tr><td>Timestamp</td><td id="motion-tst"></td></tr>
+			</tbody>
+		</table>
+	</div>
 	<!--
 	<h1>Apache Cordova</h1>
 	<div id="deviceready" class="blink">

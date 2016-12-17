@@ -1,3 +1,6 @@
+#buttons button {
+	text-transform: capitalize;
+}
 .deck {
 	display: none;
 }
