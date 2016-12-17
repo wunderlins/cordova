@@ -1,3 +1,7 @@
 .deck {
 	display: none;
 }
+
+#camera-img {
+	width: 100%;
+}

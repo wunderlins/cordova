@@ -30,6 +30,7 @@ var app = {
 			this.receivedEvent('deviceready');
 			document.getElementById("btn-device").addEventListener("click", this.btnClick, false);
 			document.getElementById("btn-battery").addEventListener("click", this.btnClick, false);
+			document.getElementById("btn-camera").addEventListener("click", this.btnClick, false);
 			//console.log(r)
 			this.get_device()
 			document.getElementById("deck-device").style.display = "block";
@@ -37,11 +38,15 @@ var app = {
 			document.addEventListener("pause", this.onPause, false);
 			document.addEventListener("resume", this.onResume, false);
 			document.addEventListener("menubutton", this.onMenuKeyDown, false);
-			document.getElementById("body").addEventListener("load", app.onload, false);
+			//document.getElementById("body").addEventListener("load", app.onload, false);
 			
 			window.addEventListener("batterystatus", this.onBatteryStatus, false);
 			window.addEventListener("batterylow", this.onBatteryStatusLow, false);
 			window.addEventListener("batterycritical", this.onBatteryStatusCritical, false);
+			
+			document.getElementById("camera-picture-camera").addEventListener("click", this.camera.take_picture, false);
+			document.getElementById("camera-picture-storage").addEventListener("click", this.camera.load_picture, false);
+			
 		},
 		
     // Update DOM on a Received Event
@@ -62,7 +67,9 @@ var app = {
     	var id = e.srcElement.id.substr(4);
     	document.getElementById("deck-device").style.display = "none";
     	document.getElementById("deck-battery").style.display = "none";
+    	document.getElementById("deck-camera").style.display = "none";
     	
+    	console.log(id)
     	document.getElementById("deck-" + id).style.display = "block";
     },
     
@@ -81,6 +88,57 @@ var app = {
     	this.innerHtml("device-manufacturer", device.manufacturer);
     	this.innerHtml("device-isVirtual", device.isVirtual);
     	this.innerHtml("device-serial", device.serial);
+    },
+    
+    // == camera api ==
+    camera: {
+    	take_picture: function(e) {
+    		console.log(e);
+				navigator.camera.getPicture(onSuccess, onFail, 
+					{ 
+						quality: 50,
+						destinationType: Camera.DestinationType.FILE_URI 
+					}
+				);
+
+				function onSuccess(imageURI) {
+					var image = document.getElementById('camera-img');
+					image.src = imageURI;
+				}
+
+				function onFail(message) {
+					
+					// iOS quirk: using setTimeout tow work around a bug with alert in ios
+					setTimeout(function() {
+						alert('Failed because: ' + message);
+					}, 0);
+				}
+    	
+    	},
+    	load_picture: function(e) {
+    		console.log(e);
+				navigator.camera.getPicture(onSuccess, onFail, 
+					{ 
+						quality: 50,
+						destinationType: Camera.DestinationType.FILE_URI,
+						sourceType: Camera.PictureSourceType.PHOTOLIBRARY
+					}
+				);
+
+				function onSuccess(imageURI) {
+					var image = document.getElementById('camera-img');
+					image.src = imageURI;
+				}
+
+				function onFail(message) {
+					
+					// iOS quirk: using setTimeout tow work around a bug with alert in ios
+					setTimeout(function() {
+						alert('Failed because: ' + message);
+					}, 0);
+				}
+    	
+    	},
     },
     
     // == battery status ==

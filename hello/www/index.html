@@ -41,6 +41,9 @@
 	
 	<button id="btn-device">Device</button>
 	<button id="btn-battery">Battery</button>
+	<button id="btn-camera">Camera</button>
+	<hr />
+	
 	<!--
 	console.log("cordova     : " + device.cordova);
 	console.log("model       : " + device.model);
@@ -73,6 +76,12 @@
 				<tr><td>isPlugged</td><td id="battery-isPlugged"></td></tr>
 			</tbody>
 		</table>
+	</div>
+
+	<div id="deck-camera" class="deck">
+		<button id="camera-picture-camera">Take Picture</button>
+		<button id="camera-picture-storage">Load Picture</button>
+		<img id="camera-img" src=""/>
 	</div>
 
 
