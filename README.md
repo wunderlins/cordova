@@ -68,4 +68,8 @@ create app
 	cordova build android
 	cordova emulate android
 	cordova run android # android phone must be connected
-	
+
+## useful plugins
+
+- https://github.com/katzer/cordova-plugin-background-mode
+
