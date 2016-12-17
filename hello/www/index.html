@@ -36,10 +36,11 @@
 	<link rel="stylesheet" type="text/css" href="css/hello.css">
 	<title>Hello World</title>
 </head>
-<body>
+<body id="body">
 	<div class="app">
-	<button id="clickMe">Click Me!</button>
-
+	
+	<button id="btn-device">Device</button>
+	<button id="btn-battery">Battery</button>
 	<!--
 	console.log("cordova     : " + device.cordova);
 	console.log("model       : " + device.model);
@@ -50,20 +51,29 @@
 	console.log("isVirtual   : " + device.isVirtual);
 	console.log("serial      : " + device.serial);
 	-->
-	<table>
-		<tbody>
-			<tr><td>cordova</td><td id="device-cordova"></td></tr>
-			<tr><td>model</td><td id="device-model"></td></tr>
-			<tr><td>platform</td><td id="device-platform"></td></tr>
-			<tr><td>uuid</td><td id="device-uuid"></td></tr>
-			<tr><td>version</td><td id="device-version"></td></tr>
-			<tr><td>manufacturer</td><td id="device-manufacturer"></td></tr>
-			<tr><td>isVirtual</td><td id="device-isVirtual"></td></tr>
-			<tr><td>serial</td><td id="device-serial"></td></tr>
-		</tbody>
-	</table>
+	<div id="deck-device" class="deck">
+		<table>
+			<tbody>
+				<tr><td>cordova</td><td id="device-cordova"></td></tr>
+				<tr><td>model</td><td id="device-model"></td></tr>
+				<tr><td>platform</td><td id="device-platform"></td></tr>
+				<tr><td>uuid</td><td id="device-uuid"></td></tr>
+				<tr><td>version</td><td id="device-version"></td></tr>
+				<tr><td>manufacturer</td><td id="device-manufacturer"></td></tr>
+				<tr><td>isVirtual</td><td id="device-isVirtual"></td></tr>
+				<tr><td>serial</td><td id="device-serial"></td></tr>
+			</tbody>
+		</table>
+	</div>
 
-
+	<div id="deck-battery" class="deck">
+		<table>
+			<tbody>
+				<tr><td>level</td><td id="battery-level"></td></tr>
+				<tr><td>isPlugged</td><td id="battery-isPlugged"></td></tr>
+			</tbody>
+		</table>
+	</div>
 
 
 	<!--
