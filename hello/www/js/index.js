@@ -66,6 +66,9 @@ var app = {
 			var watchID = navigator.accelerometer.watchAcceleration(
 				app.onMotionSuccess, app.onMotionError, options);
 
+			var options = { frequency: 1000 }; // Update every 3 seconds
+			var watchID = navigator.compass.watchHeading(
+				app.onOrientationSuccess, app.onOrientationError, options);
 		},
 		
     // Update DOM on a Received Event
@@ -193,6 +196,16 @@ var app = {
 			alert('onMotionError!');
 		},
 		
+		
+		// == orientation ==
+		onOrientationSuccess: function(heading) {
+			app.innerHtml("orientation-heading", heading.magneticHeading);
+		},
+
+		onOrientationError: function(compassError) {
+			alert('Compass error: ' + compassError.code);
+		},
+
 		// == general events ==
 		onPause: function(e) {
 			// Handle the pause event
