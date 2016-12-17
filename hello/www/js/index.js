@@ -28,19 +28,38 @@ var app = {
     // 'pause', 'resume', etc.
     onDeviceReady: function() {
         this.receivedEvent('deviceready');
+        document.getElementById("clickMe").addEventListener("click", this.clickMe, false);
+        //console.log(r)
     },
 
     // Update DOM on a Received Event
     receivedEvent: function(id) {
         var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
+        //var listeningElement = parentElement.querySelector('.listening');
+        //var receivedElement = parentElement.querySelector('.received');
 
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
+        //listeningElement.setAttribute('style', 'display:none;');
+        //receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
+    },
+    
+    innerHtml: function(id, markup) {
+    	document.getElementById(id).innerHTML = markup;
+    },
+    
+    clickMe: function(e) {
+    	//console.log(e)
+    	app.innerHtml("device-cordova", device.cordova);
+    	app.innerHtml("device-model", device.model);
+    	app.innerHtml("device-platform", device.platform);
+    	app.innerHtml("device-uuid", device.uuid);
+    	app.innerHtml("device-version", device.version);
+    	app.innerHtml("device-manufacturer", device.manufacturer);
+    	app.innerHtml("device-isVirtual", device.isVirtual);
+    	app.innerHtml("device-serial", device.serial);
     }
+    
 };
 
 app.initialize();

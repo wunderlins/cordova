@@ -26,6 +26,13 @@ install oracle java sdk
 	make-jpkg jdk-8u111-linux-x64.tar.gz
 	sudo dpkg -i oracle-java8-jdk_8u111_amd64.deb
 
+install google chrome for debugging
+
+	wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+	sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+	sudo apt-get update
+	sudo apt-get install google-chrome-stable
+
 - Download android Studio for linux: https://developer.android.com/studio/index.html
 - run installer
 - install SDK
@@ -52,6 +59,13 @@ create app
 	cordova create hello net.wunderlin.hello HelloWorld
 	cd hello
 	cordova platform add android --save # or ios or browser
+	cordova platform add browser
 	cordova platform ls
 	
+	cordova build browser
+	cordova run browser
+	
+	cordova build android
+	cordova emulate android
+	cordova run android # android phone must be connected
 	
