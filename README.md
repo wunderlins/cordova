@@ -69,6 +69,15 @@ create app
 	cordova emulate android
 	cordova run android # android phone must be connected
 
+## install plugins
+	cordova plugin add cordova-plugin-battery-status
+	cordova plugin add cordova-plugin-camera
+	cordova plugin add cordova-plugin-console
+	cordova plugin add cordova-plugin-device
+	cordova plugin add cordova-plugin-device-motion
+	cordova plugin add cordova-plugin-device-orientation
+	
+
 ## useful plugins
 
 - https://github.com/katzer/cordova-plugin-background-mode
