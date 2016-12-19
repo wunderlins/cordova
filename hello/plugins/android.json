@@ -1,0 +1,44 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "net.wunderlin.hello"
+        },
+        "cordova-plugin-geolocation": {
+            "PACKAGE_NAME": "net.wunderlin.hello"
+        },
+        "phonegap-plugin-barcodescanner2": {
+            "CAMERA_USAGE_DESCRIPTION": " ",
+            "PACKAGE_NAME": "net.wunderlin.hello"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "net.wunderlin.hello"
+        },
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "net.wunderlin.hello"
+        },
+        "cordova-plugin-battery-status": {
+            "PACKAGE_NAME": "net.wunderlin.hello"
+        },
+        "cordova-plugin-camera": {
+            "PACKAGE_NAME": "net.wunderlin.hello"
+        },
+        "cordova-plugin-device-motion": {
+            "PACKAGE_NAME": "net.wunderlin.hello"
+        },
+        "cordova-plugin-device-orientation": {
+            "PACKAGE_NAME": "net.wunderlin.hello"
+        }
+    },
+    "dependent_plugins": {
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "net.wunderlin.hello"
+        }
+    }
+}
